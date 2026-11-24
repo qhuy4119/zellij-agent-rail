@@ -1,0 +1,18 @@
+[package]
+name = "zellij-agent-rail"
+version = "0.1.0"
+edition = "2021"
+description = "A Zellij agent rail driven by native status and attention events (OSC 7501)"
+license = "MIT"
+
+[dependencies]
+zellij-tile = "0.46.0"
+
+# Zellij plugins are command-style wasm modules: the loader calls a WASI
+# `_start` entry, which `register_plugin!` generates for a binary crate.
+
+[profile.release]
+opt-level = "s"
+lto = true
+panic = "abort"
+strip = true
